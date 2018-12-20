@@ -1,6 +1,6 @@
 <template>
   <div class="view">
-    <div class="sideBar">
+    <div class="left">
       <sideBar @jump="jump"></sideBar>
     </div>
     <div class="right">
@@ -51,9 +51,14 @@ export default {
   display: flex;
   justify-content: space-between;
   background: #f4f7fc;
-  .sideBar{
+  .left{
     width: 60px;
     height: 100%;
+    margin-right: 5px;
+  }
+  .right{
+    width: calc(100% - 65px);
+    background: #fff;
   }
 }
 </style>

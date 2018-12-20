@@ -58,8 +58,10 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  background: #fff;
 }
 .sideBar{
+  background: #fff;
   .sideItem{
     width: 50px;
     height: 30px;
