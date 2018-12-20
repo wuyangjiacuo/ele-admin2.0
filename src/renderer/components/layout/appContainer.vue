@@ -1,12 +1,14 @@
 <template>
-  <div class="">
-    <el-container>
-      <el-aside width="80px"><sideBar @jump="jump"></sideBar></el-aside>
-      <el-container>
-        <el-header><headerBar></headerBar></el-header>
-        <el-main class="mainContent"><slot></slot></el-main>
-      </el-container>
-    </el-container>
+  <div class="view">
+    <div class="sideBar">
+      <sideBar @jump="jump"></sideBar>
+    </div>
+    <div class="right">
+      <headerBar></headerBar>
+      <div class="content">
+        <slot></slot>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -43,7 +45,15 @@ export default {
 </script>
 
 <style scoped lang="less">
-.mainContent{
+.view{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
   background: #f4f7fc;
+  .sideBar{
+    width: 60px;
+    height: 100%;
+  }
 }
 </style>
