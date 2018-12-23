@@ -1,6 +1,6 @@
 <template>
   <div class="headerBar" style="-webkit-app-region: drag">
-    <div class="logo">柯基的小面板</div>
+    <div class="logo">蒋大侠</div>
     <div class="actions">
       <div class="avatar">
         <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1545580331502&di=569d169edd4db4bb40e2b16537e36a00&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201512%2F06%2F20151206012149_S3FBG.jpeg" alt="">

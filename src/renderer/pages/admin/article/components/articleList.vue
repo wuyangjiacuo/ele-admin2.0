@@ -1,6 +1,7 @@
 
 <template>
   <div class="">
+    <queryForm @query="queryList"></queryForm>
     <el-table
       :data="articleList"
       style="width: 100%">
@@ -59,6 +60,7 @@
 </template>
 
 <script>
+import queryForm from './queryForm'
 export default {
   name: '',
   data () {
@@ -79,6 +81,9 @@ export default {
       totalItems: 0
     }
   },
+  components: {
+    queryForm
+  },
   activated: function () {},
   created: function () {},
   mounted: function () {
@@ -94,6 +99,11 @@ export default {
         }
       })
     },
+    queryList (data) {
+      this.query.cate_id = data.cateId
+      this.query.keyword = data.keword
+      this.getArticleList()
+    },
     getArticleList () {
       this.$api.article.getArticleList(this.query).then(res => {
         if (res.data.code === 200) {
@@ -106,7 +116,6 @@ export default {
     },
     selectChange (val) {
       // 需要将label绑定了cate的id
-      console.log(val[val.length - 1]) // cate的id
       this.query.cate_id = val[val.length - 1]
     },
     onSubmit () {

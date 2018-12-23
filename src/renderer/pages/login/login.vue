@@ -84,7 +84,7 @@ export default {
   bottom: 0;
   background: #eee;
   background: url('./../../assets/loginBG.png') no-repeat;
-  background-size: 100%;
+  background-size: cover;
 }
 .loginBox{
   width: 35%;

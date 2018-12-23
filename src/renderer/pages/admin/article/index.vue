@@ -8,6 +8,7 @@
     </div>
     <div class="tabs">
       <el-tabs type="border-card">
+        <!-- 文章列表 -->
         <el-tab-pane label="文章列表">
           <articleList v-if="!showDetail" @detail="seeDetail"></articleList>
           <div v-else class="detail">
@@ -15,8 +16,14 @@
             <editor :id="articleId" @update="showDetail = false"></editor>
           </div>
         </el-tab-pane>
-        <el-tab-pane label="添加文章">知识点数表格</el-tab-pane>
-        <el-tab-pane label="任务数表格">任务数表格</el-tab-pane>
+        <!-- 添加文章 -->
+        <el-tab-pane label="添加文章">
+          <editor :id="null" @add="addSuccess"></editor>
+        </el-tab-pane>
+        <!-- 分类管理 -->
+        <el-tab-pane label="分类管理">
+          <cateEditor></cateEditor>
+        </el-tab-pane>
       </el-tabs>
     </div>
   </div>
@@ -24,6 +31,7 @@
 
 <script>
 import articleList from './components/articleList'
+import cateEditor from './components/cateEditor'
 export default {
   name: '',
   data () {
@@ -33,7 +41,8 @@ export default {
     }
   },
   components: {
-    articleList
+    articleList,
+    cateEditor
   },
   activated: function () {},
   created: function () {},
@@ -42,6 +51,9 @@ export default {
     seeDetail (id) {
       this.articleId = id
       this.showDetail = true
+    },
+    addSuccess () {
+      console.log(123)
     }
   },
   watch: {}
