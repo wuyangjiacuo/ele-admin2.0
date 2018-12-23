@@ -4,7 +4,7 @@
       <sideBar @jump="jump"></sideBar>
     </div>
     <div class="right">
-      <headerBar></headerBar>
+      <headerBar class="headerBar"></headerBar>
       <div class="content">
         <slot></slot>
       </div>
@@ -35,7 +35,7 @@ export default {
     handleClose () {
     },
     jump (path) {
-      console.log(path)
+      // console.log(path)
       this.$emit('jump', path)
       // this.$router.push(path)
     }
@@ -46,19 +46,30 @@ export default {
 
 <style scoped lang="less">
 .view{
-  width: 100%;
-  height: 100%;
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   display: flex;
   justify-content: space-between;
-  background: #f4f7fc;
   .left{
     width: 60px;
     height: 100%;
     margin-right: 5px;
+    background: #fff;
   }
   .right{
     width: calc(100% - 65px);
     background: #fff;
+    .headerBar{
+      height: 50px;
+    }
+    .content{
+      // padding: 10px;
+      height: calc(100% - 50px);
+    }
   }
 }
 </style>

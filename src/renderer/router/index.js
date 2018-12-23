@@ -28,51 +28,32 @@ export default new Router({
       path: '/admin',
       name: 'admin',
       component: require('@/pages/admin/index').default,
+      // redirect: '/admin/dashboard',
       children: [
         {
-          path: 'article/addArticle',
-          name: 'addArticle',
-          component: require('@/pages/admin/article/addArticle').default
+          path: 'dashboard',
+          name: 'dashboard',
+          component: require('@/pages/admin/dashboard/index').default
         },
         {
-          path: 'article/articleManager',
-          name: 'articleManager',
-          component: require('@/pages/admin/article/articleManager').default
+          path: 'articles',
+          name: 'articles',
+          component: require('@/pages/admin/article/index').default
         },
         {
-          path: 'article/editArticle',
-          name: 'editArticle',
-          component: require('@/pages/admin/article/editArticle').default
+          path: 'gifs',
+          name: 'gifs',
+          component: require('@/pages/admin/gif/index').default
         },
         {
-          path: 'article/cateEditor',
-          name: 'cateEditor',
-          component: require('@/pages/admin/article/cateEditor').default
+          path: 'tasks',
+          name: 'tasks',
+          component: require('@/pages/admin/task/index').default
         },
         {
-          path: 'gif/gifManager',
-          name: 'gifManager',
-          component: require('@/pages/admin/gif/gifManager').default
-        },
-        {
-          path: 'task/addTask',
-          name: 'addTask',
-          component: require('@/pages/admin/task/addTask').default
-        },
-        {
-          path: 'task/taskmanager',
-          name: 'taskmanager',
-          component: require('@/pages/admin/task/taskmanager').default
-        },
-        {
-          path: 'user/addUser',
-          name: 'addUser',
-          component: require('@/pages/admin/user/addUser').default
-        },
-        {
-          path: 'user/userManager',
-          name: 'userManager',
-          component: require('@/pages/admin/user/userManager').default
+          path: 'users',
+          name: 'users',
+          component: require('@/pages/admin/user/index').default
         }
       ]
     }

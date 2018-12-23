@@ -83,7 +83,9 @@ export default {
   activated: function () {},
   created: function () {},
   mounted: function () {
-    this.getCateInfo()
+    if (this.id) {
+      this.getCateInfo()
+    }
   },
   methods: {
     getCateInfo () {

@@ -14,13 +14,22 @@ export default {
   },
   activated: function () {},
   created: function () {},
-  mounted: function () {},
+  mounted: function () {
+    this.jump('/admin/dashboard')
+  },
   methods: {
     jump (path) {
       this.$router.replace(path)
     }
-  },
-  watch: {}
+  }
+  // watch: {
+  //   $router: {
+  //     handler: function (val, oldval) {
+  //       // console.log(this.$route.path)
+  //     },
+  //     deep: true
+  //   }
+  // }
 }
 </script>
 

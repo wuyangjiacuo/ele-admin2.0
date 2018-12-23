@@ -7,22 +7,22 @@
       <el-table-column
         fixed
         prop="title"
-        label="标题"
+        label="title"
         width="200">
       </el-table-column>
-      <el-table-column
+      <!-- <el-table-column
         prop="summary"
         label="简介"
         width="200">
-      </el-table-column>
+      </el-table-column> -->
       <el-table-column
         prop="views"
-        label="浏览次数"
+        label="view"
         width="50">
       </el-table-column>
       <el-table-column
         prop="cate_id"
-        label="分类ID"
+        label="cate"
         width="50">
         <!-- <template slot-scope="scope">
           {{cate}}
@@ -30,17 +30,23 @@
       </el-table-column>
       <el-table-column
         prop="meta.createAt"
-        label="添加时间"
-        width="200">
+        label="add time"
+        width="150">
+        <template slot-scope="scope">
+          {{$utils.formateTime(scope.row.meta.createAt)}}
+        </template>
       </el-table-column>
       <el-table-column
         prop="meta.updateAt"
-        label="最后编辑时间"
-        width="200">
+        label="update time"
+        width="150">
+        <template slot-scope="scope">
+          {{$utils.formateTime(scope.row.meta.updateAt)}}
+        </template>
       </el-table-column>
       <el-table-column
         fixed="right"
-        label="操作"
+        label="operation"
         width="200">
         <template slot-scope="scope">
           <el-button type="success" @click="edit(scope.row)">编辑</el-button>
@@ -66,7 +72,7 @@ export default {
       articleList: [],
       query: {
         keyword: '',
-        pageSize: 8,
+        pageSize: 6,
         page: 1,
         cate_id: 0
       },
@@ -78,6 +84,7 @@ export default {
   mounted: function () {
     this.getCateInfo()
     this.getArticleList()
+    this.$utils.formateTime(123)
   },
   methods: {
     getCateInfo () {
@@ -93,7 +100,7 @@ export default {
           this.articleList = []
           this.articleList = res.data.data.items
           this.totalItems = res.data.data.totalItems
-          console.log(this.totalItems)
+          // console.log(this.totalItems)
         }
       })
     },
@@ -110,13 +117,14 @@ export default {
       this.getArticleList()
     },
     edit (data) {
-      console.log(data)
-      this.$router.replace({
-        path: '/admin/article/editArticle',
-        query: {
-          _id: data._id
-        }
-      })
+      // console.log(data)
+      this.$emit('detail', data._id)
+      // this.$router.replace({
+      //   path: '/admin/article/editArticle',
+      //   query: {
+      //     _id: data._id
+      //   }
+      // })
     },
     del (data) {
       console.log(data)

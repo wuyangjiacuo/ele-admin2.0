@@ -1,12 +1,12 @@
 <template>
   <div>
     <div class="header">
-      <i class="el-icon-menu"></i>
+      <i :class="[active === 0 ? 'activeIcon' : '', 'el-icon-menu']" @click="goto('/admin/dashboard', -1)"></i>
     </div>
     <div class="sideBar">
       <div class="sideItem" v-for="(item, index) in routerTree" :key="index">
-        <div :class="[active === index ? 'activeBorder' : '', 'routeBorder']"></div>
-        <div :class="[active === index ? 'activeIcon' : '', 'routeIcon']" @click="goto(item.path, index)"><i :class="item.icon"></i></div>
+        <div :class="[active === index + 1 ? 'activeBorder' : '', 'routeBorder']"></div>
+        <div :class="[active === index + 1 ? 'activeIcon' : '', 'routeIcon']" @click="goto(item.path, index)"><i :class="item.icon"></i></div>
       </div>
     </div>
   </div>
@@ -20,16 +20,20 @@ export default {
       active: 0,
       routerTree: [
         {
-          path: '/admin/article/articles',
+          path: '/admin/articles',
+          icon: 'el-icon-document'
+        },
+        {
+          path: '/admin/tasks',
           icon: 'el-icon-date'
         },
         {
-          path: '/admin/article/articles',
-          icon: 'el-icon-date'
+          path: '/admin/gifs',
+          icon: 'el-icon-star-on'
         },
         {
-          path: '/admin/article/articles',
-          icon: 'el-icon-date'
+          path: '/admin/users',
+          icon: 'el-icon-service'
         }
       ]
     }
@@ -43,9 +47,9 @@ export default {
     handleClose () {
     },
     goto (path, index) {
-      console.log(path)
-      this.active = index
-      // this.$emit('jump', path)
+      // console.log(path)
+      this.active = index + 1
+      this.$emit('jump', path)
     }
   },
   watch: {}
@@ -77,13 +81,16 @@ export default {
       justify-content: center;
       align-items: center;
       i{
-        font-size: 20px;
+        font-size: 15px;
       }
     }
     .activeBorder{
       background: #1089fe;
     }
     .activeIcon{
+      i{
+        font-size: 20px;
+      }
       i:before{
         color: #1089fe;
       }

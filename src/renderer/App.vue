@@ -13,14 +13,14 @@
       }
     },
     mounted () {
-      let that = this
+      // let that = this
       // 每1分钟清空一次已发提示数组
-      setInterval(function () {
-        this.notificationList = []
-      }, 60000)
-      setInterval(function () {
-        that.checkForMessage()
-      }, 5000)
+      // setInterval(function () {
+      //   this.notificationList = []
+      // }, 60000)
+      // setInterval(function () {
+      //   that.checkForMessage()
+      // }, 5000)
     },
     methods: {
       checkForMessage () {
@@ -72,7 +72,17 @@
 </script>
 
 <style>
-#app{
+#app, body{
+  font-family: 'pingfang';
+  font-size: 12px;
   margin: 0;
+  background: #f4f7fc;
+  border-radius: 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* overflow-y: scroll; */
 }
 </style>
