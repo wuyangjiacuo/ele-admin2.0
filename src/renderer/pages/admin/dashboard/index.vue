@@ -23,9 +23,8 @@
     </div>
     <div class="charts">
       <el-tabs type="border-card">
-        <el-tab-pane>
-          <span slot="label"><i class="el-icon-date"></i>文章数表格</span>
-          文章数表格
+        <el-tab-pane label="文章数表格">
+          <articleDash></articleDash>
         </el-tab-pane>
         <el-tab-pane label="知识点数表格">知识点数表格</el-tab-pane>
         <el-tab-pane label="任务数表格">任务数表格</el-tab-pane>
@@ -35,10 +34,14 @@
 </template>
 
 <script>
+import articleDash from './components/articleDash'
 export default {
   name: '',
   data () {
     return {}
+  },
+  components: {
+    articleDash
   },
   activated: function () {},
   created: function () {},
