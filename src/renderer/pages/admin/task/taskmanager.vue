@@ -24,7 +24,7 @@
           <el-table-column
             prop="type"
             label="类型"
-            width="120">
+            width="80">
             <template slot-scope="scope">
               <span v-if="scope.row.type === 1">工作</span>
               <span v-if="scope.row.type === 2">学习</span>
@@ -56,7 +56,8 @@
       title="任务详情"
       v-if="showEditor"
       :visible.sync="showEditor"
-      width="60%">
+      append-to-body="true"
+      width="80%">
       <editor :formData="taskForm" @cancle="cancle"></editor>
     </el-dialog>
   </div>

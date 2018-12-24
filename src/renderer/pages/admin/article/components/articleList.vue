@@ -50,8 +50,8 @@
         label="operation"
         width="200">
         <template slot-scope="scope">
-          <el-button type="success" @click="edit(scope.row)">编辑</el-button>
-          <el-button type="danger" @click="del(scope.row)">删除</el-button>
+          <el-button type="success" size="mini" @click="edit(scope.row)">编辑</el-button>
+          <el-button type="danger" size="mini" @click="del(scope.row)">删除</el-button>
         </template>
       </el-table-column>
     </el-table>

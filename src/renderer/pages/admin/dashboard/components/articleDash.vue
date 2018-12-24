@@ -1,6 +1,7 @@
 <template>
   <div class="">
-    <ve-pie :data="chartData"></ve-pie>
+    <p>文章分类占比</p>
+    <ve-pie v-if="chartData" :data="chartData"></ve-pie>
   </div>
 </template>
 
@@ -9,22 +10,24 @@ export default {
   name: '',
   data () {
     return {
-      chartData: {
-        columns: ['date', 'cost', 'profit'],
-        rows: [
-          { 'date': '01/01', 'cost': 123, 'profit': 3 },
-          { 'date': '01/02', 'cost': 1223, 'profit': 6 },
-          { 'date': '01/03', 'cost': 2123, 'profit': 90 },
-          { 'date': '01/04', 'cost': 4123, 'profit': 12 },
-          { 'date': '01/05', 'cost': 3123, 'profit': 15 },
-          { 'date': '01/06', 'cost': 7123, 'profit': 20 }
-        ]
-      }
+      chartData: null
     }
   },
   activated: function () {},
   created: function () {},
-  mounted: function () {},
+  mounted: function () {
+    this.chartData = {
+      columns: ['cate', 'cost', 'profit'],
+      rows: [
+        { 'vue': 'vue', 'cost': 123, 'profit': 3 },
+        { 'cate': 'dart', 'cost': 1223, 'profit': 6 },
+        { 'cate': 'flutter', 'cost': 2123, 'profit': 90 },
+        { 'cate': 'ES6', 'cost': 4123, 'profit': 12 },
+        { 'cate': 'element', 'cost': 3123, 'profit': 15 },
+        { 'cate': 'css', 'cost': 7123, 'profit': 20 }
+      ]
+    }
+  },
   methods: {},
   watch: {}
 }

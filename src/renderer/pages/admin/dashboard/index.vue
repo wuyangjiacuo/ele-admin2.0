@@ -23,7 +23,7 @@
     </div>
     <div class="charts">
       <el-tabs type="border-card">
-        <el-tab-pane label="文章数表格">
+        <el-tab-pane label="文章分析">
           <articleDash></articleDash>
         </el-tab-pane>
         <el-tab-pane label="知识点数表格">知识点数表格</el-tab-pane>
