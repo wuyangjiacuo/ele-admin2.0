@@ -7,22 +7,28 @@
       </p>
     </div>
     <div class="tabs">
-      <el-tabs type="border-card">
+      <el-tabs type="border-card" @tab-click="tabClick">
         <!-- 文章列表 -->
         <el-tab-pane label="文章列表">
-          <articleList v-if="!showDetail" @detail="seeDetail"></articleList>
-          <div v-else class="detail">
-            <el-button type="success" size="mini" @click="showDetail = false"><i class="el-icon-back"></i></el-button>
-            <editor :id="articleId" @update="showDetail = false"></editor>
+          <div v-if="currentLabel === '文章列表'">
+            <articleList v-if="!showDetail" @detail="seeDetail"></articleList>
+            <div v-else class="detail">
+              <el-button type="success" size="mini" @click="showDetail = false"><i class="el-icon-back"></i></el-button>
+              <editor :id="articleId" @update="showDetail = false"></editor>
+            </div>
           </div>
         </el-tab-pane>
         <!-- 添加文章 -->
         <el-tab-pane label="添加文章">
-          <editor :id="null" @add="addSuccess"></editor>
+          <div v-if="currentLabel === '添加文章'">
+            <editor :id="null" @add="addSuccess"></editor>
+          </div>
         </el-tab-pane>
         <!-- 分类管理 -->
         <el-tab-pane label="分类管理">
-          <cateEditor></cateEditor>
+          <div v-if="currentLabel === '分类管理'">
+            <cateEditor></cateEditor>
+          </div>
         </el-tab-pane>
       </el-tabs>
     </div>
@@ -37,7 +43,8 @@ export default {
   data () {
     return {
       showDetail: false,
-      articleId: null
+      articleId: null,
+      currentLabel: '文章列表'
     }
   },
   components: {
@@ -54,6 +61,10 @@ export default {
     },
     addSuccess () {
       console.log(123)
+    },
+    tabClick (val) {
+      console.log(val)
+      this.currentLabel = val.label
     }
   },
   watch: {}

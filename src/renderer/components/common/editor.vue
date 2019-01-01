@@ -80,12 +80,12 @@ export default {
       }
     }
   },
-  activated: function () {},
+  activated: function () {
+    this.getCateInfo()
+  },
   created: function () {},
   mounted: function () {
-    if (this.id) {
-      this.getCateInfo()
-    }
+    this.getCateInfo()
   },
   methods: {
     getCateInfo () {

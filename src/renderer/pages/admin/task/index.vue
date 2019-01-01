@@ -7,18 +7,22 @@
       </p>
     </div>
     <div class="tabs">
-      <el-tabs type="border-card">
+      <el-tabs type="border-card" @tab-click="tabClick">
         <!-- 任务列表 -->
         <el-tab-pane label="任务列表">
-          <taskList v-if="!showDetail" @detail="seeDetail"></taskList>
-          <div v-else class="detail">
-            <el-button type="success" size="mini" @click="showDetail = false"><i class="el-icon-back"></i></el-button>
-            <taskDetail :id="taskId" @update="showDetail = false"></taskDetail>
+          <div v-if="currentLabel === '任务列表'">
+            <taskList v-if="!showDetail" @detail="seeDetail"></taskList>
+            <div v-else class="detail">
+              <el-button type="success" size="mini" @click="showDetail = false"><i class="el-icon-back"></i></el-button>
+              <taskDetail :id="taskId" @update="showDetail = false"></taskDetail>
+            </div>
           </div>
         </el-tab-pane>
         <!-- 添加任务 -->
         <el-tab-pane label="添加任务">
-          <addTask :id="null" @add="addSuccess"></addTask>
+          <div v-if="currentLabel === '添加任务'">
+            <addTask :id="null" @add="addSuccess"></addTask>
+          </div>
         </el-tab-pane>
       </el-tabs>
     </div>
@@ -34,7 +38,8 @@ export default {
   data () {
     return {
       showDetail: false,
-      taskId: null
+      taskId: null,
+      currentLabel: '任务列表'
     }
   },
   components: {
@@ -52,6 +57,10 @@ export default {
     },
     addSuccess () {
       console.log(123)
+    },
+    tabClick (val) {
+      console.log(val.label)
+      this.currentLabel = val.label
     }
   },
   watch: {}
